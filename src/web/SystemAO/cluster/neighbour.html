@@ -1,74 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"/>
-	<meta charset="UTF-8">
-    <link rel="stylesheet" href="../../script/semantic/semantic.min.css">
+  <head>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../script/semantic/semantic.min.css" />
     <script src="../../script/jquery.min.js"></script>
-	<script src="../../script/semantic/semantic.min.js"></script>
+    <script src="../../script/semantic/semantic.min.js"></script>
     <script src="../arsm/js/moment.min.js"></script>
     <style>
-        .hidden{
-            display:none;
-        }
+      .hidden {
+        display: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="ui container">
-        <div class="ui basic segment">
-            <div class="ui header">
-                <i class="server icon"></i>
-                <div class="content">
-                    Cluster Neightbourhood
-                    <div class="sub header">Automatic Cluster Discovery Services</div>
-                </div>
-            </div>
+      <div class="ui basic segment">
+        <div class="ui header">
+          <i class="server icon"></i>
+          <div class="content">
+            Cluster Neightbourhood
+            <div class="sub header">Automatic Cluster Discovery Services</div>
+          </div>
         </div>
-        
-        <div class="ui divider"></div>
-        <div class="ui red message" id="errbox" style="display:none;">
-            <div class="header">
-                Cluster Scan Error
-            </div>
-            <p id="errormsg">An unknown error has occurred. Please try again later.</p>
+      </div>
+
+      <div class="ui divider"></div>
+      <div class="ui red message" id="errbox" style="display: none">
+        <div class="header">Cluster Scan Error</div>
+        <p id="errormsg">
+          An unknown error has occurred. Please try again later.
+        </p>
+      </div>
+      <h4 class="ui header">
+        This Host
+        <div class="sub header">
+          The broadcasting information sent out by this host server.
         </div>
-        <h4 class="ui header">
-            This Host
-            <div class="sub header">The broadcasting information sent out by this host server.</div>
-        </h4>
-        <div class="ui basic segment" id="thisHost">
-            
+      </h4>
+      <div class="ui basic segment" id="thisHost"></div>
+      <div class="ui divider"></div>
+      <h4 class="ui header">
+        Nearby Hosts
+        <div class="sub header">
+          The CLUB broadcast receiver from the Local Area Network.
         </div>
-        <div class="ui divider"></div>
-        <h4 class="ui header">
-            Nearby Hosts
-            <div class="sub header">The ArozOS broadcast receiver from the Local Area Network.</div>
-        </h4>
-        <div class="ui basic segment" id="nearybylist">
-            
-        </div>
-        <div class="ui divider"></div>
-        <p>Last Updates: <span id="lastUpdateTime"></span> seconds ago</p>
-        <br><br><br>
+      </h4>
+      <div class="ui basic segment" id="nearybylist"></div>
+      <div class="ui divider"></div>
+      <p>Last Updates: <span id="lastUpdateTime"></span> seconds ago</p>
+      <br /><br /><br />
     </div>
     <script>
-
-        initClusterScannerList();
-        function initClusterScannerList(){
-            $.get("../../system/cluster/scan", function(data){
-                if (data.error !== undefined){
-                    $("#errormsg").text(data.error);
-                    $("#errbox").show();
-                }else{
-                    //Render this Host info
-                    if (data.ThisHost != null){
-                        var host = data.ThisHost
-                        $("#thisHost").append(`<div class="ui icon green message">
+      initClusterScannerList();
+      function initClusterScannerList() {
+        $.get("../../system/cluster/scan", function (data) {
+          if (data.error !== undefined) {
+            $("#errormsg").text(data.error);
+            $("#errbox").show();
+          } else {
+            //Render this Host info
+            if (data.ThisHost != null) {
+              var host = data.ThisHost;
+              $("#thisHost").append(`<div class="ui icon green message">
                             <i class="server icon"></i>
                             <div class="content">
                                 <div class="header">
-                                    <a href="//${host.HostName}:${host.Port}" target="_blank">${host.HostName}</a>
+                                    <a href="//${host.HostName}:${
+                host.Port
+              }" target="_blank">${host.HostName}</a>
                                 </div>
                                 <div class="ui list">
                                     <div class="item">
@@ -80,7 +84,9 @@
                                     <div class="item">
                                         <i class="paperclip icon"></i>
                                         <div class="content">
-                                        ${host.MinorVersion} (${host.BuildVersion})
+                                        ${host.MinorVersion} (${
+                host.BuildVersion
+              })
                                         </div>
                                     </div>
                                     <div class="item">
@@ -98,17 +104,19 @@
                                 </div>
                             </div>
                         </div>`);
-                    }
+            }
 
-                    //Render remote host info
-                    $("#nearybylist").html("");
-                    data.NearbyHosts.forEach(host => {
-                        var iplinks = [];
-                        host.IPv4.forEach(ip => {
-                            iplinks.push(`<a href="//${ip}:${host.Port}" target="_blank">${ip}</a>`);
-                        }) 
-                        var ipDOM = iplinks.join(" / ");
-                        $("#nearybylist").append(`<div class="ui icon teal message">
+            //Render remote host info
+            $("#nearybylist").html("");
+            data.NearbyHosts.forEach((host) => {
+              var iplinks = [];
+              host.IPv4.forEach((ip) => {
+                iplinks.push(
+                  `<a href="//${ip}:${host.Port}" target="_blank">${ip}</a>`
+                );
+              });
+              var ipDOM = iplinks.join(" / ");
+              $("#nearybylist").append(`<div class="ui icon teal message">
                         <i class="server icon"></i>
                         <div class="content">
                             <div class="header">
@@ -142,16 +150,15 @@
                             </div>
                         </div>
                     </div>`);
-                    });
-
-                    //Update the update time
-                    $("#lastUpdateTime").text(Math.floor(Date.now() / 1000) - data.LastUpdate);
-                }
             });
 
-
-        }
-       
+            //Update the update time
+            $("#lastUpdateTime").text(
+              Math.floor(Date.now() / 1000) - data.LastUpdate
+            );
+          }
+        });
+      }
     </script>
-</body>
+  </body>
 </html>

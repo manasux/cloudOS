@@ -5,7 +5,7 @@
     <meta name="robots" content="noindex" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="author" href="humans.txt"/>
-    <title>ArozOS - Login</title>
+    <title>CLUB - Login</title>
     <link rel="stylesheet" href="script/tocas/tocas.css">
     <link rel="stylesheet" href="script/ao.css">
     <script type="application/javascript" src="script/tocas/tocas.js"></script>
@@ -93,7 +93,7 @@
             <img class="ts medium image" src="data:image/png;base64, {{service_logo}}">
 
             <div class="ts borderless basic segment">
-                <p><i class="key icon"></i> Sign in <span class="hostname">ArozOS</span> with your username and password</p>
+                <p><i class="key icon"></i> Sign in <span class="hostname">CLUB</span> with your username and password</p>
                 <div class="oauthonly" style="display:none;">
                     <a class="ts fluid small button oauthbtn" href="system/auth/oauth/login">Sign In via OAuth 2.0</a><br>
                 </div>
@@ -122,7 +122,7 @@
             </div>
            
             <div class="bottombar">
-                © <a href="https://arozos.com">ArozOS</a> 2017 - <span class="thisyear"></span><br>
+                © <a href="https://arozos.com">CLUB</a> 2017 - <span class="thisyear"></span><br>
                 <small style="font-size: 80%">Request Time: <span id="requestTime"></span></small>
             </div>
         </div>

@@ -6,7 +6,7 @@
             "fontFamily":"\"Microsoft JhengHei\",\"SimHei\", \"Apple LiGothic Medium\", \"STHeiti\"",
             "strings":{
                 "topbar/welcome":"歡迎回來",
-                "topbar/arozos":"ArozOS 網頁桌面模式",
+                "topbar/club":"CLUB 網頁桌面模式",
 
                 "notification/clear": "全部清除",
                 "notification/nonotification":"沒有通知",
@@ -96,7 +96,7 @@
             "fontFamily":"\"Microsoft JhengHei\",\"SimHei\", \"Apple LiGothic Medium\", \"STHeiti\"",
             "strings":{
                 "topbar/welcome":"歡迎回來",
-                "topbar/arozos":"ArozOS 網頁桌面模式",
+                "topbar/club":"CLUB 網頁桌面模式",
 
                 "notification/clear": "全部清除",
                 "notification/nonotification":"無通知",
@@ -187,7 +187,7 @@
             "fontFamily":"\"Microsoft YaHei\",\"SimHei\", \"PingFangSC-Medium\", \"STHeiti\"",
             "strings":{
                 "topbar/welcome":"欢迎回来",
-                "topbar/arozos":"ArozOS 网页桌面模式",
+                "topbar/club":"CLUB 网页桌面模式",
 
                 "notification/clear": "全部清除",
                 "notification/nonotification":"没有通知",
